@@ -5,6 +5,9 @@ using System.Web;
 
 namespace WebApplication10.Models
 {
+    /// <summary>
+    /// 该类中,ShoppingCart和LinqValueCalculator紧耦合
+    /// </summary>
     public class ShoppingCart
     {
         /// <summary>

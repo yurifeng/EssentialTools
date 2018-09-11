@@ -7,6 +7,9 @@ using WebApplication10.Models;
 
 namespace WebApplication10.Controllers
 {
+    /// <summary>
+    /// 该控制器中,ShoppingCart和LinqValueCalculator与HomeController紧耦合
+    /// </summary>
     public class HomeController : Controller
     {
         /// <summary>
