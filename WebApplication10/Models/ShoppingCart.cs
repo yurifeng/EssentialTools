@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 
 namespace WebApplication10.Models
 {
@@ -10,18 +7,23 @@ namespace WebApplication10.Models
     /// </summary>
     public class ShoppingCart
     {
+        // <summary>
+        // 将求和的类添加为自己的私有字段(耦合)
+        // </summary>
+        //private LinqValueCalculator calc;
+
         /// <summary>
-        /// 将求和的类添加为自己的私有字段(耦合)
+        /// 将接口作为字段,减少了与LinqValueCalculator类的紧耦合
         /// </summary>
-        private LinqValueCalculator calc;
+        private IValueCalculator _calc;
 
         /// <summary>
         /// 构造方法传入求和的类
         /// </summary>
         /// <param name="calcParam"></param>
-        public ShoppingCart(LinqValueCalculator calcParam)
+        public ShoppingCart(IValueCalculator calcParam)
         {
-            calc = calcParam;
+            _calc = calcParam;
         }
 
         /// <summary>
@@ -36,7 +38,7 @@ namespace WebApplication10.Models
         /// <returns></returns>
         public decimal CalculateProductTotal()
         {
-            return calc.ValueProducts(Products);
+            return _calc.ValueProducts(Products);
         }
     }
 }

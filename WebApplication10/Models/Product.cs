@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace WebApplication10.Models
+﻿namespace WebApplication10.Models
 {
     /// <summary>
     /// 创建Product的实体类

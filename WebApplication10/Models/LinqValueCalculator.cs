@@ -6,7 +6,7 @@ namespace WebApplication10.Models
     /// <summary>
     /// 创建查询Product的价格总和
     /// </summary>
-    public class LinqValueCalculator
+    public class LinqValueCalculator : IValueCalculator
     {
         /// <summary>
         /// 用Linq的Sum方法求和
