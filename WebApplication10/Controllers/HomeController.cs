@@ -9,6 +9,11 @@ namespace WebApplication10.Controllers
     public class HomeController : Controller
     {
         /// <summary>
+        /// 将接口作为私有属性
+        /// </summary>
+        private IValueCalculator calc;
+
+        /// <summary>
         /// 硬编码创建Product对象数组
         /// </summary>
         private Product[] products =
@@ -21,10 +26,11 @@ namespace WebApplication10.Controllers
             new Product{Name="hst",Category="Study",Price=330},
         };
 
-        /// <summary>
-        /// 将接口作为私有属性
-        /// </summary>
-        private IValueCalculator calculator;
+        public HomeController()
+        {
+
+        }
+
 
         /// <summary>
         /// 构造方法
@@ -32,12 +38,7 @@ namespace WebApplication10.Controllers
         /// <param name="calcParam"></param>
         public HomeController(IValueCalculator calcParam)
         {
-            calculator = calcParam;
-        }
-
-        public HomeController()
-        {
-            
+            calc = calcParam;
         }
 
         /// <summary>
@@ -46,16 +47,15 @@ namespace WebApplication10.Controllers
         /// <returns></returns>
         public ActionResult Index()
         {
-            ShoppingCart shoppingCart = new ShoppingCart(calculator) { Products = products };
-            decimal totalCount = shoppingCart.CalculateProductTotal();
-            return View(totalCount);
+            ShoppingCart shoppingCart = new ShoppingCart(calc) { Products = products };
+            decimal totalValue = shoppingCart.CalculateProductTotal();
+            return View(totalValue);
         }
 
 
-        //<summary>
-        //动作中有很严重的依赖耦合
-        //</summary>
-        //<returns></returns>
+
+        #region 动作中有很严重的依赖耦合
+
         //public ActionResult Index()
         //{
         //    //实例化LinqValueCalculator
@@ -71,9 +71,10 @@ namespace WebApplication10.Controllers
         //    return View(totalValue);
         //}
 
+        #endregion
 
+        #region 虽然用到了Ninject,但是耦合解除不彻底
 
-        //虽然用上了Ninject,但是效果不彻底
         //public ActionResult Index()
         //{
         //    //实例化IKernel的实现类StandardKernel(简言之:就是创建DI容器的内核实例)
@@ -93,5 +94,7 @@ namespace WebApplication10.Controllers
 
         //    return View(calcTotal);
         //}
+
+        #endregion
     }
 }

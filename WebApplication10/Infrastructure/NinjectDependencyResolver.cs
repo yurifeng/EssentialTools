@@ -7,17 +7,19 @@ using WebApplication10.Models;
 namespace WebApplication10.Infrastructure
 {
     /// <summary>
-    /// 该类用于Ninject的DI容器运作,将减少控制器的负担(况且这些也不是控制器该操心的)
+    /// Ninject的准备工作在此类完成
     /// </summary>
     public class NinjectDependencyResolver : IDependencyResolver//该类实现IDependencyResolver接口
     {
+
         /// <summary>
         /// 将IKernel作为该类的私有字段
         /// </summary>
         private IKernel kernel;
 
         /// <summary>
-        /// 该类的构造方法(传入IKernel接口)
+        /// 构造方法(传入IKernel接口)
+        /// 该构造方法由App_Start中的NinjectWebCommon类使用
         /// </summary>
         /// <param name="kernelParam"></param>
         public NinjectDependencyResolver(IKernel kernelParam)
@@ -32,12 +34,13 @@ namespace WebApplication10.Infrastructure
         /// </summary>
         private void AddBindings()
         {
+            //内核绑定IValueCalculator接口,实例化的是LinqValueCalculator
             kernel.Bind<IValueCalculator>().To<LinqValueCalculator>();
         }
 
 
         /// <summary>
-        /// 
+        /// 实现IDependencyResolver接口要重写的GetService方法
         /// </summary>
         /// <param name="serviceType"></param>
         /// <returns></returns>
@@ -46,6 +49,11 @@ namespace WebApplication10.Infrastructure
             return kernel.TryGet(serviceType);
         }
 
+        /// <summary>
+        /// 实现IDependencyResolver接口要重写的返回为泛型的方法
+        /// </summary>
+        /// <param name="serviceType"></param>
+        /// <returns></returns>
         public IEnumerable<object> GetServices(Type serviceType)
         {
             return kernel.GetAll(serviceType);

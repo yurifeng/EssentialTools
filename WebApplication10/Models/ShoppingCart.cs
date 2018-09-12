@@ -15,7 +15,7 @@ namespace WebApplication10.Models
         /// <summary>
         /// 将接口作为字段,减少了与LinqValueCalculator类的紧耦合
         /// </summary>
-        private IValueCalculator _calc;
+        private IValueCalculator calc;
 
         /// <summary>
         /// 构造方法传入求和的类
@@ -23,7 +23,7 @@ namespace WebApplication10.Models
         /// <param name="calcParam"></param>
         public ShoppingCart(IValueCalculator calcParam)
         {
-            _calc = calcParam;
+            calc = calcParam;
         }
 
         /// <summary>
@@ -38,7 +38,7 @@ namespace WebApplication10.Models
         /// <returns></returns>
         public decimal CalculateProductTotal()
         {
-            return _calc.ValueProducts(Products);
+            return calc.ValueProducts(Products);
         }
     }
 }

@@ -3,6 +3,7 @@ using System.Linq;
 
 namespace WebApplication10.Models
 {
+
     /// <summary>
     /// 创建查询Product的价格总和
     /// </summary>
@@ -13,9 +14,6 @@ namespace WebApplication10.Models
         /// </summary>
         /// <param name="products"></param>
         /// <returns></returns>
-        public decimal ValueProducts(IEnumerable<Product> products)
-        {
-            return products.Sum(p => p.Price);
-        }
+        public decimal ValueProducts(IEnumerable<Product> products) => products.Sum(p => p.Price);
     }
 }
