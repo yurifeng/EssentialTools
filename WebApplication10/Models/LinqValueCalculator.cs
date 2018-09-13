@@ -27,7 +27,7 @@ namespace WebApplication10.Models
         /// <summary>
         /// 将IDiscountHelper作为字段
         /// </summary>
-        private IDiscountHelper _discounter;
+        private readonly IDiscountHelper _discounter;
 
         private static int _counter = 0;
 

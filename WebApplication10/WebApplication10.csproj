@@ -101,7 +101,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
-    <Content Include="项目概述\项目梳理流程-1.txt" />
+    <Compile Include="项目概述\项目梳理流程-1.cs" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -119,7 +119,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
+    <Compile Include="Infrastructure\NDependencyResolver.cs" />
     <Compile Include="Models\Discount.cs" />
     <Compile Include="Models\FlexibleDiscountHelper.cs" />
     <Compile Include="Models\IValueCalculator.cs" />
