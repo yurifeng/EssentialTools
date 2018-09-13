@@ -9,7 +9,7 @@ namespace WebApplication10.Infrastructure
     /// <summary>
     /// Ninject的准备工作在此类完成
     /// </summary>
-    public class NinjectDependencyResolver : IDependencyResolver//该类实现IDependencyResolver接口
+    public class NDependencyResolver : IDependencyResolver//该类实现IDependencyResolver接口
     {
 
         /// <summary>
@@ -22,7 +22,7 @@ namespace WebApplication10.Infrastructure
         /// 该构造方法由App_Start中的NinjectWebCommon类使用
         /// </summary>
         /// <param name="kernelParam"></param>
-        public NinjectDependencyResolver(IKernel kernelParam)
+        public NDependencyResolver(IKernel kernelParam)
         {
             kernel = kernelParam;
             //调用下面已经配置好的内核

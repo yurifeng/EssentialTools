@@ -14,7 +14,7 @@ namespace WebApplication10
         {
             //将自创建的NinjectDependencyResolver(kernel)
             //用DependencyResolver的SetResolver方法注册成解析器
-            DependencyResolver.SetResolver(new NinjectDependencyResolver(kernel));
+            DependencyResolver.SetResolver(new NDependencyResolver(kernel));
         }
     }
 }
