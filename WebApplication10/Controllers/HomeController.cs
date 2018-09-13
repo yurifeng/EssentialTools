@@ -16,14 +16,14 @@ namespace WebApplication10.Controllers
         /// <summary>
         /// 硬编码创建Product对象数组
         /// </summary>
-        private Product[] products =
+        private Product[] _products =
         {
             new Product{Name="yty",Category="Sports", Price=250},
             new Product{Name="livid",Category="Home",Price=300},
             new Product{Name="htt",Category="Study",Price=180},
             new Product{Name="jsd",Category="Sports",Price=280},
             new Product{Name="jt",Category="Study",Price=320},
-            new Product{Name="hst",Category="Study",Price=330},
+            new Product{Name="hst",Category="Study",Price=330}
         };
 
         public HomeController()
@@ -31,12 +31,12 @@ namespace WebApplication10.Controllers
 
         }
 
-
         /// <summary>
         /// 构造方法
         /// </summary>
         /// <param name="calcParam"></param>
-        public HomeController(IValueCalculator calcParam)
+        /// <param name="calc2"></param>
+        public HomeController(IValueCalculator calcParam, IValueCalculator calc2)
         {
             calc = calcParam;
         }
@@ -47,8 +47,8 @@ namespace WebApplication10.Controllers
         /// <returns></returns>
         public ActionResult Index()
         {
-            ShoppingCart shoppingCart = new ShoppingCart(calc) { Products = products };
-            decimal totalValue = shoppingCart.CalculateProductTotal();
+            ShoppingCart cart = new ShoppingCart(calc) { Products = _products };
+            decimal totalValue = cart.CalculateProductTotal();
             return View(totalValue);
         }
 

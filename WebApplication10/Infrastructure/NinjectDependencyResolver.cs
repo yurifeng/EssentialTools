@@ -36,6 +36,15 @@ namespace WebApplication10.Infrastructure
         {
             //内核绑定IValueCalculator接口,实例化的是LinqValueCalculator
             kernel.Bind<IValueCalculator>().To<LinqValueCalculator>();
+
+            //设置属性
+            //kernel.Bind<IDiscountHelper>().To<DefaultDiscountHelper>().WithPropertyValue("DiscountSize", 50M);
+
+            //当Discount类使用构造方法时
+            kernel.Bind<IDiscountHelper>().To<DefaultDiscountHelper>().WithConstructorArgument("discountParam", 50M);
+
+            //最终会创建LinqValueCalculator对象WhenInjectedInto
+            kernel.Bind<IDiscountHelper>().To<FlexibleDiscountHelper>().WhenInjectedInto<LinqValueCalculator>();
         }
 
 
