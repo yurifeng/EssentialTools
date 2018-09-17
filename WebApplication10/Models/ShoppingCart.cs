@@ -38,7 +38,7 @@ namespace WebApplication10.Models
         /// <returns></returns>
         public decimal CalculateProductTotal()
         {
-            return calc.ValueProducts(products: Products);
+            return calc.ValueProducts(Products);
         }
     }
 }

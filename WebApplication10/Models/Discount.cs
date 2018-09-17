@@ -23,7 +23,7 @@
         public decimal ApplyDiscount(decimal totalParam)
         {
             //打1折
-            return (totalParam - (_discountSize * totalParam));
+            return (totalParam - (_discountSize / 100m * totalParam));
         }
     }
 }

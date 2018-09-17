@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Web.Mvc;
 using Ninject;
+using Ninject.Web.Common;
 using WebApplication10.Models;
 
 namespace WebApplication10.Infrastructure
@@ -35,7 +36,7 @@ namespace WebApplication10.Infrastructure
         private void AddBindings()
         {
             //内核绑定IValueCalculator接口,实例化的是LinqValueCalculator
-            kernel.Bind<IValueCalculator>().To<LinqValueCalculator>();
+            kernel.Bind<IValueCalculator>().To<LinqValueCalculator>().InRequestScope();
 
             //设置属性
             //kernel.Bind<IDiscountHelper>().To<DefaultDiscountHelper>().WithPropertyValue("DiscountSize", 50M);
